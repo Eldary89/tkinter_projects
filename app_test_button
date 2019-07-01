@@ -1,0 +1,17 @@
+from tkinter import *
+
+window = Tk()
+
+
+def confirm(event):
+    print(var)
+
+
+var = IntVar()
+
+c = Checkbutton(text="Hello?", variable = var)
+c.pack()
+
+window.bind("<Return>", confirm)
+
+window.mainloop()

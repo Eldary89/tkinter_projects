@@ -1,0 +1,38 @@
+from tkinter import *
+
+window = Tk()
+window.title("Menu Bar App")
+window.geometry("400x300")
+
+
+def print_hello():
+    print("Hello World")
+
+
+def popup(event):
+    popup_menu.post(event.x_root, event.y_root)
+
+
+menu_bar = Menu(window)
+file_menu = Menu(menu_bar)
+save_menu = Menu(file_menu)
+popup_menu = Menu(window)
+
+menu_bar.add_cascade(label = "File", menu = file_menu)
+file_menu.add_command(label = "New", command = print_hello)
+file_menu.add_command(label = "Open", command = print_hello)
+file_menu.add_separator()
+file_menu.add_cascade(label = "Save", menu = save_menu)
+save_menu.add_command(label = "Save...")
+save_menu.add_command(label = "Save as...")
+
+menu_bar.add_command(label = "Quit", command = window.quit)
+
+popup_menu.add_command(label = "Open", command = print_hello)
+popup_menu.add_command(label = "Change", command = print_hello)
+
+window.bind("<Button-2>", popup)
+
+window.config(menu = menu_bar)
+
+window.mainloop()

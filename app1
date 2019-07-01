@@ -1,0 +1,34 @@
+from tkinter import *
+import time
+import math
+
+window = Tk()
+window.title("Hello Pycharm")
+window.geometry("500x600")
+
+w = 20
+x = 10
+y = 300
+
+
+def st(event):
+    global x, y, w, oval
+    x = 20
+    while x < 470:
+        x = (x + .1)
+        xy = x, y + 50 * (math.sin(x-20)), x + w, y + 50 * (math.sin(x-20)) + w
+        print("x:"+str(x)+" y:"+str(50*math.sin(x)))
+        can.coords(oval, xy)
+        window.update()
+        time.sleep(.05)
+
+
+
+can = Canvas(window)
+can.pack(fill=BOTH, expand=1)
+
+oval = can.create_oval(x, y, x + w, y + w, fill='yellow')
+
+window.bind("<Return>", st)
+
+window.mainloop()
